@@ -9,20 +9,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Film extends Oeuvre
 {
+
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
-    private $resume;
+    private $duree;
 
 
-    public function getResume(): ?string
+    public function getDuree(): ?string
     {
-        return $this->resume;
+        return $this->duree;
     }
 
-    public function setResume(string $resume): self
+    public function setDuree(string $duree): self
     {
-        $this->resume = $resume;
+        $this->duree = $duree;
 
         return $this;
     }

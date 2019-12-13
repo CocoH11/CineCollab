@@ -21,6 +21,11 @@ abstract class Oeuvre
      */
     private $titre;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $resume;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ abstract class Oeuvre
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(string $resume): self
+    {
+        $this->resume = $resume;
 
         return $this;
     }
