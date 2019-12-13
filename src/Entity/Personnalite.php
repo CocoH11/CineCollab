@@ -33,6 +33,11 @@ class Personnalite
      */
     private $metiers;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Nationalite")
+     */
+    private $nationalite;
+
     public function __construct()
     {
         $this->metiers = new ArrayCollection();
@@ -91,6 +96,18 @@ class Personnalite
             $this->metiers->removeElement($metier);
             $metier->removePersonnalite($this);
         }
+
+        return $this;
+    }
+
+    public function getNationalite(): ?Nationalite
+    {
+        return $this->nationalite;
+    }
+
+    public function setNationalite(?Nationalite $nationalite): self
+    {
+        $this->nationalite = $nationalite;
 
         return $this;
     }
