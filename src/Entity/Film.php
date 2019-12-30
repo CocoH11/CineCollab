@@ -53,10 +53,16 @@ class Film
      */
     private $nationalites;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SpecialInfo", mappedBy="film", cascade={"persist"})
+     */
+    private $specialinfos;
+
     public function __construct()
     {
         $this->genres = new ArrayCollection();
         $this->nationalites = new ArrayCollection();
+        $this->specialinfos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,6 +177,37 @@ class Film
     {
         if ($this->nationalites->contains($nationalite)) {
             $this->nationalites->removeElement($nationalite);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SpecialInfo[]
+     */
+    public function getSpecialinfos(): Collection
+    {
+        return $this->specialinfos;
+    }
+
+    public function addSpecialinfo(SpecialInfo $specialinfo): self
+    {
+        if (!$this->specialinfos->contains($specialinfo)) {
+            $this->specialinfos[] = $specialinfo;
+            $specialinfo->setFilm($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialinfo(SpecialInfo $specialinfo): self
+    {
+        if ($this->specialinfos->contains($specialinfo)) {
+            $this->specialinfos->removeElement($specialinfo);
+            // set the owning side to null (unless already changed)
+            if ($specialinfo->getFilm() === $this) {
+                $specialinfo->setFilm(null);
+            }
         }
 
         return $this;
