@@ -50,6 +50,16 @@ class User implements UserInterface
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $authNewsEmail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +165,30 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getAuthNewsEmail(): ?bool
+    {
+        return $this->authNewsEmail;
+    }
+
+    public function setAuthNewsEmail(bool $authNewsEmail): self
+    {
+        $this->authNewsEmail = $authNewsEmail;
 
         return $this;
     }
