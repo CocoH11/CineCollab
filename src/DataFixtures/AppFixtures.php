@@ -18,9 +18,9 @@ class AppFixtures extends Fixture
     {
         $this->loadGenre($manager);
         $this->loadNationalite($manager);
-        $this->loadMetiers($manager);
-        $this->loadPersonnalites($manager);
-        $this->loadFilms($manager);
+        //$this->loadMetiers($manager);
+        //$this->loadPersonnalites($manager);
+        //$this->loadFilms($manager);
 
     }
 
@@ -106,13 +106,13 @@ class AppFixtures extends Fixture
     private function loadNationalite(ObjectManager $manager)
     {
         $nationalites=[
-            ["libelle"=>"France"],
-            ["libelle"=>"Etats Unis"],
-            ["libelle"=>"Royaume Uni"],
-            ["libelle"=>"Allemagne"],
-            ["libelle"=>"Espagne"],
-            ["libelle"=>"Canada"],
-            ["libelle"=>"Pays Bas"]
+            ["libelle"=>"Français"],
+            ["libelle"=>"Américain"],
+            ["libelle"=>"Anglais"],
+            ["libelle"=>"Allemand"],
+            ["libelle"=>"Espagnol"],
+            ["libelle"=>"Canadien"],
+            ["libelle"=>"Néerlandais"]
         ];
 
         foreach ($nationalites as $nationalite){
